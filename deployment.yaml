@@ -12,7 +12,10 @@ steps:
     - '--image'
     - 'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2/my-last-service:$COMMIT_SHA'
     - '--region'
-    - 'us-central1'   
+    - 'us-central1'
+    - '--platform' 
+    - 'managed' 
+    - '--allow-unauthenticated=false'
 images:
 - 'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2/my-last-service:$COMMIT_SHA'
 options:
