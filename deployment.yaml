@@ -10,8 +10,7 @@ steps:
     args: ['push', 
            'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2']
 
-  
-# Deploy image to Cloud Run
+
     - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
         entrypoint: gcloud
           args: 
