@@ -1,18 +1,13 @@
 steps:
-  # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
            'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2', 
            '.']
-
-  # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 
            'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2']
-
-
-    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-        entrypoint: gcloud
+   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+      entrypoint: gcloud
           args: 
             - 'run'
             - 'deploy'
@@ -21,8 +16,8 @@ steps:
             - 'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2/my-last-service:$COMMIT_SHA'
             - '--region'
             - 'us-central1'
-        images:
-            - 'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2/my-last-service:$COMMIT_SHA'
+      images:
+         - 'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2/my-last-service:$COMMIT_SHA'
         options:
             pool:
                 name: 'projects/mjcastellanos-pf-dev/locations/us-central1/workerPools/my-pool'
