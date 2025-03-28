@@ -1,13 +1,10 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 
-           'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2', 
-           '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 
-           'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2']
-   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-      entrypoint: gcloud
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2/my-last-service:$COMMIT_SHA', '.']
+ - name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/mjcastellanos-pf-dev/service-w2/service-w2.2/my-last-service:$COMMIT_SHA']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
           args: 
             - 'run'
             - 'deploy'
